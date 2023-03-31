@@ -1,10 +1,11 @@
 package com.example.demoimagepicker
 
 import android.os.Bundle
-import android.provider.MediaStore
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.example.demoimagepicker.adapter.GridImageAdapter
 import com.example.demoimagepicker.databinding.ActivityMainBinding
+import com.luck.picture.lib.entity.LocalMedia
+import com.luck.picture.lib.instagram.InsGallery
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,6 +14,8 @@ class MainActivity : AppCompatActivity() {
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
+    val mAdapter : GridImageAdapter?=null
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,19 +23,50 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        for (i in getData()) {
-            binding.txtView.append(i.dateModified.toString()+"\n")
-            Log.e("TAG", "onCreate: new data is here    ---- >  " + i.path)
-        }
-    }
 
-    private fun getData() : ArrayList<MediaItem> {
+      /*  for (i in getData()) {
+            binding.txtView.append(i.path+"\n")
+            Log.e("TAG", "onCreate: new data is here    ---- >  " + i.path)
+        }*/
+
+
+        val list = mutableListOf<LocalMedia>()
+
+        list.add(LocalMedia().apply {
+            this.path = "https://wx1.sinaimg.cn/mw690/006e0i7xly1gaxqq5m7t8j31311g2ao6.jpg"
+        })
+        list.add(LocalMedia().apply {
+            this.path = "\"https://ww1.sinaimg.cn/bmiddle/bcd10523ly1g96mg4sfhag20c806wu0x.gif\""
+        })
+
+
+//        val onresult   : OnResultCallbackListener
+
+        binding.btn.setOnClickListener(){
+            InsGallery.openGallery(
+                this@MainActivity,
+                GlideEngine.createGlideEngine(),
+                GlideCacheEngine.createCacheEngine(),
+                mAdapter?.data
+            )
+        }
+
+    }
+   /* private val onAddPicClickListener: Any = object : this() {
+        fun onAddPicClick() {
+            InsGallery.openGallery(
+                this@MainActivity,
+                GlideEngine.createGlideEngine(),
+                GlideCacheEngine.createCacheEngine(),
+                mAdapter.data
+            )
+        }
+    }*/
+
+
+    /*  private fun getData() : ArrayList<MediaItem> {
         // Set the projection to retrieve media items
-        val projection = arrayOf(
-            MediaStore.Files.FileColumns._ID,
-            MediaStore.Files.FileColumns.DATA,
-            MediaStore.Files.FileColumns.DATE_MODIFIED,
-            MediaStore.Files.FileColumns.MEDIA_TYPE )
+        val projection = arrayOf(MediaStore.Files.FileColumns._ID,MediaStore.Files.FileColumns.DATA, MediaStore.Files.FileColumns.DATE_MODIFIED, MediaStore.Files.FileColumns.MEDIA_TYPE )
 
         // Set the selection to retrieve only videos and images
         val selection = "${MediaStore.Files.FileColumns.MEDIA_TYPE}=" + "${MediaStore.Files.FileColumns.MEDIA_TYPE_VIDEO} OR " +
@@ -56,10 +90,10 @@ class MainActivity : AppCompatActivity() {
                     mediaList.add(mediaItem)
                 }
             }
-
             cursor.close()
         }
         return mediaList
-    }
+    }*/
+
 
 }
