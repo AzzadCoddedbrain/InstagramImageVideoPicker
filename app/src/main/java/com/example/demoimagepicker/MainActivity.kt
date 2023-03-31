@@ -13,9 +13,7 @@ import com.luck.picture.lib.instagram.InsGallery
 class MainActivity : AppCompatActivity() {
 
 
-    private val binding by lazy {
-        ActivityMainBinding.inflate(layoutInflater)
-    }
+    private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
     val mAdapter : GridImageAdapter?=null
 
 
@@ -42,8 +40,6 @@ class MainActivity : AppCompatActivity() {
             when(requestCode){
                 PictureConfig.CHOOSE_REQUEST ->{
                     val selectList = PictureSelector.obtainMultipleResult(data)
-
-
                     for (media in selectList) {
                         Log.i("MainActivity.TAG", "path :" + media.isCompressed)
                         Log.i("MainActivity.TAG", "comress path:" + media.compressPath)
