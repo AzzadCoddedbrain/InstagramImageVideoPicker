@@ -25,12 +25,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-
-/**
- * @author：luck
- * @date：2016-7-27 23:02
- * @describe：GridImageAdapter
- */
 public class GridImageAdapter extends
         RecyclerView.Adapter<GridImageAdapter.ViewHolder> {
     public static final String TAG = "PictureSelector";
@@ -39,18 +33,14 @@ public class GridImageAdapter extends
     private LayoutInflater mInflater;
     private List<LocalMedia> list = new ArrayList<>();
     private int selectMax = 9;
-    /**
-     * 点击添加图片跳转
-     */
+  
     private onAddPicClickListener mOnAddPicClickListener;
 
     public interface onAddPicClickListener {
         void onAddPicClick();
     }
 
-    /**
-     * 删除
-     */
+
     public void delete(int position) {
         try {
 
@@ -119,9 +109,7 @@ public class GridImageAdapter extends
         }
     }
 
-    /**
-     * 创建ViewHolder
-     */
+    
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = mInflater.inflate(R.layout.gv_filter_image,
@@ -135,9 +123,7 @@ public class GridImageAdapter extends
         return position == size;
     }
 
-    /**
-     * 设置值
-     */
+    
     @Override
     public void onBindViewHolder(final ViewHolder viewHolder, final int position) {
         //少于8张，显示继续添加的图标
@@ -149,8 +135,6 @@ public class GridImageAdapter extends
             viewHolder.mIvDel.setVisibility(View.VISIBLE);
             viewHolder.mIvDel.setOnClickListener(view -> {
                 int index = viewHolder.getAdapterPosition();
-                // 这里有时会返回-1造成数据下标越界,具体可参考getAdapterPosition()源码，
-                // 通过源码分析应该是bindViewHolder()暂未绘制完成导致，知道原因的也可联系我~感谢
                 if (index != RecyclerView.NO_POSITION && list.size() > index) {
                     list.remove(index);
                     notifyItemRemoved(index);
@@ -177,21 +161,21 @@ public class GridImageAdapter extends
                 path = media.getPath();
             }
 
-            Log.i(TAG, "原图地址::" + media.getPath());
+            Log.i(TAG, "::" + media.getPath());
 
             if (media.isCut()) {
-                Log.i(TAG, "裁剪地址::" + media.getCutPath());
+                Log.i(TAG, "::" + media.getCutPath());
             }
             if (media.isCompressed()) {
-                Log.i(TAG, "压缩地址::" + media.getCompressPath());
-                Log.i(TAG, "压缩后文件大小::" + new File(media.getCompressPath()).length() / 1024 + "k");
+                Log.i(TAG, "::" + media.getCompressPath());
+                Log.i(TAG, "::" + new File(media.getCompressPath()).length() / 1024 + "k");
             }
             if (!TextUtils.isEmpty(media.getAndroidQToPath())) {
-                Log.i(TAG, "Android Q特有地址::" + media.getAndroidQToPath());
+                Log.i(TAG, "Android Q::" + media.getAndroidQToPath());
             }
             if (media.isOriginal()) {
-                Log.i(TAG, "是否开启原图功能::" + true);
-                Log.i(TAG, "开启原图功能后地址::" + media.getOriginalPath());
+                Log.i(TAG, "::" + true);
+                Log.i(TAG, "::" + media.getOriginalPath());
             }
 
             long duration = media.getDuration();
