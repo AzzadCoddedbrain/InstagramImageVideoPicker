@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
                         Log.i("MainActivity.TAG", "comress path:" + media.compressPath)
                         Log.i("MainActivity.TAG", "path:" + media.path)
                         Log.i("MainActivity.TAG", "cut path:" + media.isCut)
-                        Log.i("MainActivity.TAG", "path:" + medicutPath)
+                        Log.i("MainActivity.TAG", "path:" + media.cutPath)
                         Log.i("MainActivity.TAG", "path original:" + media.isOriginal)
                         Log.i("MainActivity.TAG", "原图路径:" + media.originalPath)
                         Log.i("MainActivity.TAG", "Android Q 特有Path:" + media.androidQToPath)
