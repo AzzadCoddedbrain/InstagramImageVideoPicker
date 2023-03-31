@@ -54,7 +54,7 @@ class GlideEngine private constructor() : ImageEngine {
                     longImageView.visibility = if (eqLongImage) View.VISIBLE else View.GONE
                     imageView.visibility = if (eqLongImage) View.GONE else View.VISIBLE
                     if (eqLongImage) {
-                        // 加载长图
+
                         longImageView.isQuickScaleEnabled = true
                         longImageView.isZoomEnabled = true
                         longImageView.isPanEnabled = true

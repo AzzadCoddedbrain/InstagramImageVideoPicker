@@ -25,8 +25,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GridImageAdapter extends
-        RecyclerView.Adapter<GridImageAdapter.ViewHolder> {
+public class GridImageAdapter extends RecyclerView.Adapter<GridImageAdapter.ViewHolder> {
     public static final String TAG = "PictureSelector";
     public static final int TYPE_CAMERA = 1;
     public static final int TYPE_PICTURE = 2;
@@ -126,7 +125,7 @@ public class GridImageAdapter extends
     
     @Override
     public void onBindViewHolder(final ViewHolder viewHolder, final int position) {
-        //少于8张，显示继续添加的图标
+        //
         if (getItemViewType(position) == TYPE_CAMERA) {
             viewHolder.mImg.setImageResource(R.drawable.ic_add_image);
             viewHolder.mImg.setOnClickListener(v -> mOnAddPicClickListener.onAddPicClick());
@@ -149,15 +148,15 @@ public class GridImageAdapter extends
             int chooseModel = media.getChooseModel();
             String path;
             if (media.isCut() && !media.isCompressed()) {
-                // 裁剪过
+                //
                 path = media.getCutPath();
             } else if (media.isCompressed() || (media.isCut() && media.isCompressed())) {
-                // 压缩过,或者裁剪同时压缩过,以最终压缩过图片为准
+                //
                 path = media.getCompressPath();
             } else if (PictureMimeType.isHasVideo(media.getMimeType()) && !TextUtils.isEmpty(media.getCoverPath())) {
                 path = media.getCoverPath();
             } else {
-                // 原图
+                //
                 path = media.getPath();
             }
 
@@ -202,7 +201,7 @@ public class GridImageAdapter extends
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .into(viewHolder.mImg);
             }
-            //itemView 的点击事件
+            //itemView
             if (mItemClickListener != null) {
                 viewHolder.itemView.setOnClickListener(v -> {
                     int adapterPosition = viewHolder.getAdapterPosition();
