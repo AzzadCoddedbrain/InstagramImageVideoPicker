@@ -20,7 +20,7 @@ import com.luck.picture.lib.listener.OnItemClickListener
 import com.luck.picture.lib.tools.DateUtils
 import java.io.File
 
-class GridImageAdapter1( val context: Context) : RecyclerView.Adapter<GridImageAdapter1.ViewHolder>() {
+class GridImageAdapter(val context: Context) : RecyclerView.Adapter<GridImageAdapter.ViewHolder>() {
     val TYPE_CAMERA = 1
     val TYPE_PICTURE = 2
     private var mInflater: LayoutInflater? = null
@@ -46,7 +46,7 @@ class GridImageAdapter1( val context: Context) : RecyclerView.Adapter<GridImageA
     }
     fun GridImageAdapter(
         context: Context,
-        mOnAddPicClickListener: GridImageAdapter1.onAddPicClickListener
+        mOnAddPicClickListener: GridImageAdapter.onAddPicClickListener
     ) {
         mInflater = LayoutInflater.from(context)
         this.mOnAddPicClickListener = mOnAddPicClickListener

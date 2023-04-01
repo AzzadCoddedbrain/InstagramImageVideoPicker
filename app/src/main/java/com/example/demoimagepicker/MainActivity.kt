@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.example.demoimagepicker.adapter.GridImageAdapter1
+import com.example.demoimagepicker.adapter.GridImageAdapter
 import com.example.demoimagepicker.databinding.ActivityMainBinding
 import com.luck.picture.lib.PictureSelector
 import com.luck.picture.lib.config.PictureConfig
@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
 
 
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
-    val mAdapter : GridImageAdapter1?=null
+    val mAdapter : GridImageAdapter?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

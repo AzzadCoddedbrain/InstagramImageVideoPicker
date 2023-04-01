@@ -60,6 +60,8 @@ dependencies {
     implementation "androidx.camera:camera-view:1.0.0-alpha10"
     implementation "androidx.camera:camera-extensions:1.0.0-alpha10"
 
+
+
 }
 
 
