@@ -1,11 +1,10 @@
 package com.example.demoimagepicker
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.example.demoimagepicker.adapter.GridImageAdapter
+import com.example.demoimagepicker.adapter.GridImageAdapter1
 import com.example.demoimagepicker.databinding.ActivityMainBinding
 import com.luck.picture.lib.PictureSelector
 import com.luck.picture.lib.config.PictureConfig
@@ -15,7 +14,7 @@ class MainActivity : AppCompatActivity() {
 
 
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
-    val mAdapter : GridImageAdapter?=null
+    val mAdapter : GridImageAdapter1?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +25,7 @@ class MainActivity : AppCompatActivity() {
                 this@MainActivity,
                 GlideEngine.createGlideEngine(),
                 GlideCacheEngine.createCacheEngine(),
-                mAdapter?.data
+                mAdapter?.getData()
             )
         }
 
@@ -45,8 +44,8 @@ class MainActivity : AppCompatActivity() {
                         Log.i("MainActivity.TAG", "cut path:" + media.isCut)
                         Log.i("MainActivity.TAG", "path:" + media.cutPath)
                         Log.i("MainActivity.TAG", "path original:" + media.isOriginal)
-                        Log.i("MainActivity.TAG", "原图路径:" + media.originalPath)
-                        Log.i("MainActivity.TAG", "Android Q 特有Path:" + media.androidQToPath)
+                        Log.i("MainActivity.TAG", ":" + media.originalPath)
+                        Log.i("MainActivity.TAG", "Android Q Path:" + media.androidQToPath)
                         Log.i("MainActivity.TAG", "Size: " + media.size)
                     }
                     Log.e("TAG", "onActivityResult: -- > "+selectList.toList())
